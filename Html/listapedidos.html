@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Pedidos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Lobster&family=Moon+Dance&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <style>
+        body {
+            background-image: url(../Imagens/images.jpg);
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#a5f287; min-height: 50px;">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Navbar brand -->
+                <a class="navbar-brand mt-2 mt-lg-0" href="pagina_inicial.html">
+                    <img src="../Imagens/logo2.2.png" height="50" alt="Grab n' Eat" loading="lazy" />
+                </a>
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-weight: bold;">
+                    <li class="nav-item">
+                        <a class="nav-link" href="pagina_inicial.html">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sobre nós</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contacta-nos</a>
+                    </li>
+                </ul>
+                <!-- Left links -->
+            </div>
+            <!-- Collapsible wrapper -->
+            <!-- Right elements -->
+            <div class="d-flex align-items-center">
+                <!-- Icon -->
+                <a class="text-reset me-3" href="listapedidos.html">
+                    <i class="fa fa-list fa-2x"></i>
+                </a>
+                <a class="text-reset me-3" href="aminhaconta2.html">
+                    <i class="fa fa-user-circle fa-2x"></i>
+                </a>
+            </div>
+            <!-- Right elements -->
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+
+    <div style="float: left; margin-left: 5%; margin-top: 2%;">
+        <form>
+            <input type="button" value="Voltar" onClick="history.go(-1)" style="background-color: #a5f287; color: black; border-color: #a5f287; width: 100px;">
+        </form>
+    </div>
+
+    <div class="container" style="margin-top: 3%; text-align: center;">
+        <p>
+            <h1>Lista de pedidos:</h1>
+        </p>
+    </div>
+    <div class="container" style="margin-top: 5%;">
+        <table class="table table-striped" style="text-align: center;">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Pedido</th>
+                    <th scope="col">Doses</th>
+                    <th scope="col">Nome</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr>
+                    <th scope="row">1</th>
+                    <td>Bacalhau à Brás</td>
+                    <td>1</td>
+                    <td>Maria207</td>
+                    <td><a type="button" id="o"><i id="l" class="fa fa-check-circle-o"></i></a></td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Bacalhau à Brás</td>
+                    <td>2</td>
+                    <td>JoãoA.</td>
+                    <td><a type="button" id="e"><i id="a" class="fa fa-check-circle-o"></i></a></td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Tarte de maçã</td>
+                    <td>2</td>
+                    <td>Joana13</td>
+                    <td><a type="button" id="u"><i id="i" class="fa fa-check-circle-o"></i></a></td>
+                </tr> -->
+            </tbody>
+        </table>
+        <span style="color:grey">Apenas aparecerão os pedidos feitos à "A Nossa Casa" pois foi este o estabelecimento em que se efetuou o login.</span>
+    </div>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/knockout-3.5.1.js"></script>
+    <script src="../Scripts/bootstrap.bundle.min.js"></script>
+    <script src="../Scripts/jquery-3.6.0.js"></script>
+
+    <script>
+        $().ready(function() {
+            $("#u").click(function() {
+                $("#i").css({
+                    "color": "#a5f287"
+                });
+            });
+        });
+        $().ready(function() {
+            $("#e").click(function() {
+                $("#a").css({
+                    "color": "#a5f287"
+                });
+            });
+        });
+        $().ready(function() {
+            $("#o").click(function() {
+                $("#l").css({
+                    "color": "#a5f287"
+                });
+            });
+        });
+        window.onload = function(){
+            var lstp = JSON.parse(localStorage.getItem("lp"));
+            var n = 0;
+            var preco = '';
+            console.log(lstp); 
+            for (var el in lstp) {
+                if (el == 'Bacalhau à Brás' || el == 'Polvo Grelhado'){
+                    n = n + 1;
+                    if (el == 'Tarte de maçã') {
+                        preco = 1;
+                    } else if (el == 'Bacalhau à Brás') {
+                        preco = 5.5;
+                    } else if (el == 'Dose de Leitão') {
+                        preco = 6.5;
+                    } else if (el == 'Polvo Grelhado'){
+                        preco = 7.5;
+                    }
+                    $(".table tbody").append('<tr id="' + n + '"><th scope="row">' + n + '</th><td>' + el + '</td><td>' + lstp[el]/preco + '</td><td>Maria207</td><td><i onClick="deletar(el)" class="fa fa-trash"></i></td></tr>')
+
+                }
+                // console.log(el + ': ' + dicionario[el]);
+                // $(".table tbody").append('<tr id="' + n + '"><th scope="row">' + n + '</th><td>' + el + '</td><td>' + lstp[el]/preco + '</td><td>Maria207</td><td><i onClick="deletar(el)" class="fa fa-trash"></i></td></tr>')
+            }
+        }
+ 
+    </script>
+</body>
+
+</html>

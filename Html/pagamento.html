@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Terminar compra</title>
+    <link href="../Content/bootstrap.min.css" rel="stylesheet">
+    <link href="../Content/font-awesome.min.css" rel="stylesheet">
+    <style>
+        html,
+        body {
+            font-size-adjust: flex;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            background-image: url(../Imagens/images.jpg);
+            background-size: cover;
+        }
+        
+        .checkout-panel {
+            display: flex;
+            flex-direction: column;
+            width: 840px;
+            height: 570px;
+            margin-top: 3%;
+            float: right;
+            margin-right: 100px;
+        }
+        
+        .panel-body {
+            padding: 55px 0 0;
+            flex: 1;
+        }
+        
+        .step {
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
+            display: block;
+            width: 25px;
+            height: 25px;
+            margin-bottom: 30px;
+            border: 4px solid #fff;
+            border-radius: 50%;
+            background-color: #efefef;
+        }
+        
+        .step:after {
+            position: absolute;
+            z-index: -1;
+            top: 5px;
+            left: 22px;
+            width: 225px;
+            height: 6px;
+            content: '';
+            background-color: #efefef;
+        }
+        
+        .step:before {
+            color: #2e2e2e;
+            position: absolute;
+            top: 40px;
+        }
+        
+        .step:last-child:after {
+            content: none;
+        }
+        
+        .step.active {
+            background-color: #1abc9c;
+        }
+        
+        .step.active:after {
+            background-color: #1abc9c;
+        }
+        
+        .step.active:before {
+            color: #1abc9c;
+        }
+        
+        .step.active+.step {
+            background-color: #1abc9c;
+        }
+        
+        .step.active+.step:before {
+            color: #1abc9c;
+        }
+        
+        .step:nth-child(1):before {
+            content: 'Cart';
+        }
+        
+        .step:nth-child(2):before {
+            right: -40px;
+            content: 'Confirmation';
+        }
+        
+        .step:nth-child(3):before {
+            right: -30px;
+            content: 'Payment';
+        }
+        
+        .step:nth-child(4):before {
+            right: 0;
+            content: 'Finish';
+        }
+        
+        .payment-method {
+            display: flex;
+            margin-bottom: 60px;
+            justify-content: space-between;
+        }
+        
+        .method {
+            display: flex;
+            flex-direction: column;
+            width: 382px;
+            height: 122px;
+            padding-top: 20px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            border-radius: 2px;
+            background-color: rgb(249, 249, 249);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .card-logos {
+            display: flex;
+            width: 150px;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .radio-input {
+            margin-top: 20px;
+        }
+        
+        input[type='radio'] {
+            display: inline-block;
+        }
+        
+        .input-fields {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .input-fields label {
+            display: block;
+            margin-bottom: 10px;
+            color: rgb(80, 80, 80);
+        }
+        
+        .info {
+            font-size: 12px;
+            font-weight: 300;
+            display: block;
+            margin-top: 50px;
+            opacity: .5;
+            color: #2e2e2e;
+        }
+        
+        div[class*='column'] {
+            width: 382px;
+        }
+        
+        input[type='text'],
+        input[type='password'] {
+            font-size: 16px;
+            width: 100%;
+            height: 50px;
+            padding-right: 40px;
+            padding-left: 16px;
+            color: rgba(46, 46, 46, .8);
+            border: 1px solid rgb(225, 225, 225);
+            border-radius: 4px;
+            outline: none;
+        }
+        
+        input[type='text']:focus,
+        input[type='password']:focus {
+            border-color: rgb(119, 219, 119);
+        }
+        
+        #date {
+            background: url(img/icons_calendar_black.png) no-repeat 95%;
+        }
+        
+        #cardholder {
+            background: url(img/icons_person_black.png) no-repeat 95%;
+        }
+        
+        #cardnumber {
+            background: url(img/icons_card_black.png) no-repeat 95%;
+        }
+        
+        #verification {
+            background: url(img/icons_lock_black.png) no-repeat 95%;
+        }
+        
+        .small-inputs {
+            display: flex;
+            margin-top: 20px;
+            justify-content: space-between;
+        }
+        
+        .small-inputs div {
+            width: 182px;
+        }
+        
+        .blue-border {
+            border: 1px solid rgb(110, 178, 251);
+        }
+        
+        .warning {
+            border-color: #1abc9c;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#a5f287; min-height: 50px;">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Navbar brand -->
+                <a class="navbar-brand mt-2 mt-lg-0" href="pagina_inicial.html">
+                    <img src="../Imagens/logo2.2.png" height="50" alt="Grab n' Eat" loading="lazy" />
+                </a>
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-weight: bold;">
+                    <li class="nav-item">
+                        <a class="nav-link" href="pagina_inicial.html">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sobre nós</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contacta-nos</a>
+                    </li>
+                </ul>
+                <!-- Left links -->
+            </div>
+            <!-- Collapsible wrapper -->
+            <!-- Right elements -->
+            <div class="d-flex align-items-center">
+                <!-- Icon -->
+                <a class="text-reset me-3" href="#">
+                    <i class="fa fa-heart fa-2x"></i>
+                </a>
+                <a class="text-reset me-3" href="carrinho.html">
+                    <i class="fa fa-shopping-cart fa-2x"></i>
+                    <!-- <div class="container mt-2">
+                        <form action="http://192.168.160.36/FormEcho.aspx">
+                            <div class="row form-group">
+                                <a href="carrinho.html" class="col-md-1 offset-6 text-right"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true" style="color: black;"></i></a>
+                                <div class="col-md-1 text-right"><span class="form-control" id="quantidades" title="Quantidade total de produtos">0</span></div>
+                                <div class="col-md-2 text-right"><span class="form-control" id="total" title="Preço total da compra">0.00</span></div>
+                            </div>
+                        </form>
+                    </div> -->
+                </a>
+                <a class="text-reset me-3" href="aminhaconta.html">
+                    <i class="fa fa-user-circle fa-2x"></i>
+                </a>
+            </div>
+            <!-- Right elements -->
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+    <div class="row">
+    <div class="container col-6">
+        <div style="float: left; margin-left: 5%; margin-top: 5%;">
+            <div class="container" style="margin-top: 3%; text-align: center;">
+                <p>
+                    <h1>O meu carrinho:</h1>
+                </p>
+            </div>
+            <div class="container" style="margin-top: 5%;width: 600px;">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Pedido</th>
+                            <th scope="col">Estabelecimento</th>
+                            <th scope="col">Preço</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="container col-6">
+    <div class="checkout-panel" id="register">
+        <div class="panel-body">
+            <h1 style="text-align: center;">Método de pagamento:</h1><br>
+
+            <div class="payment-method">
+                <label for="card" class="method card">
+          <div class="card-logos">
+            <img src="https://designmodo.com/demo/checkout-panel/img/visa_logo.png"/>
+            <img src="https://designmodo.com/demo/checkout-panel/img/mastercard_logo.png"/>
+          </div>
+   
+          <div class="radio-input">
+            <input id="card" type="radio" name="payment" onchange="metodo()" value="1">
+          </div>
+        </label>
+
+                <label for="paypal" class="method paypal">
+          <img src="https://designmodo.com/demo/checkout-panel/img/paypal_logo.png"/>
+          <div class="radio-input">
+            <input id="paypal" type="radio" name="payment" onchange="metodo()" value="2">
+          </div>
+        </label>
+
+                <label for="mbway" class="method mbway">
+            <img src="../Imagens/mbway-logo-2CD6980569-seeklogo.com.png" style="height: 60px;">
+            <div class="radio-input">
+              <input id="mbway" type="radio" name="payment" onchange="metodo()" value="3">
+            </div>
+          </label>
+            </div>
+
+            <div class="input-fields" style="display: flex; justify-content: center;">
+                <div class="column-1 d-none" style="width: 280px;" id="dados1">
+                    <label for="cardholder">Name</label>
+                    <input type="text" id="cardholder" style="background-color: white;" />
+
+                    <div class="small-inputs">
+                        <div>
+                            <label for="date">Valid date</label>
+                            <input type="text" id="date" style="background-color: white;" />
+                        </div>
+
+                        <div>
+                            <label for="verification">CVV / CVC *</label>
+                            <input type="text" id="cardnumber" style="background-color: white;" />
+
+                            <span class="info">* CVV or CVC is the card security code, unique three digits number on the back of your card separate from its number.</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="column-2 d-none" id="dados2">
+                    <label for="cardnumber">Número do cartão</label>
+                    <input type="text" id="cardnumber" style="background-color: white;" />
+
+
+                </div>
+                <div class="column-3 d-none" id="dados3">
+                    <label for="cardnumber">Número de Telemóvel</label>
+                    <input type="text" id="cardnumber" style="background-color: white;" />
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>  
+    <div style="margin-left: 200px;">
+        <a href="paginafinal.html" class="btn btn-success" onClick="fazerPedido()" style="background-color: #a5f287; color: black; border-color: #a5f287; width: 300px;">Terminar compra</a>
+    </div>
+
+
+    <script src="../Scripts/jquery-3.6.0.js"></script>
+    <script>
+        var dicionario = JSON.parse(localStorage.getItem("db"));
+        console.log(dicionario);
+        window.onload = function() {
+            var n = 0;
+            var estabelecimento = '';
+
+            for (var el in dicionario) {
+                n = n + 1;
+                if (el == 'Tarte de maçã') {
+                    estabelecimento = "Pastelaria do Rossio";
+                } else if (el == 'Bacalhau à Brás') {
+                    estabelecimento = "A Nossa Casa";
+                } else if (el == 'Dose de Leitão') {
+                    estabelecimento = 'Tasquinha do Leitão';
+                } else {
+                    estabelecimento = 'Estabelecimento Novo'
+                }
+                // console.log(el + ': ' + dicionario[el]);
+                $(".table tbody").append('<tr id="' + n + '"><th scope="row">' + n + '</th><td>' + el + '</td><td>' + estabelecimento + '</td><td>' + dicionario[el] + '€</td><td><i onClick="deletar(el)" class="fa fa-trash"></i></td></tr>')
+            }
+        }
+
+        function deletar(el) {
+            console.log(this.id);
+            dicionario.remove(el);
+            location.reload();
+        }
+
+        function fazerPedido(){
+            localStorage.setItem("lp", JSON.stringify(dicionario));
+        }
+
+        function metodo() {
+            console.log("passei aqui");
+            var dadosCartao = document.getElementById("dados1");
+            if ($("#register input[type='radio']:checked").val() == 1) {
+                dadosCartao.classList.add("d-block");
+                dadosCartao.classList.remove("d-none");
+            } else {
+                dadosCartao.classList.remove("d-block");
+                dadosCartao.classList.add("d-none");
+            }
+
+            var dadosPayPal = document.getElementById("dados2");
+            if ($("#register input[type='radio']:checked").val() == 2) {
+                dadosPayPal.classList.add("d-block");
+                dadosPayPal.classList.remove("d-none");
+            } else {
+                dadosPayPal.classList.remove("d-block");
+                dadosPayPal.classList.add("d-none");
+            }
+            var dadosMbway = document.getElementById("dados3");
+            if ($("#register input[type='radio']:checked").val() == 3) {
+                dadosMbway.classList.add("d-block");
+                dadosMbway.classList.remove("d-none");
+            } else {
+                dadosMbway.classList.remove("d-block");
+                dadosMbway.classList.add("d-none");
+            }
+        }
+    </script>
+</body>
+
+</html>

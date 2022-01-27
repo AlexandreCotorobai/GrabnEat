@@ -1,0 +1,16 @@
+body {
+    background-image: url('../Imagens/5fa6a063a13e72.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 35%;
+    background-attachment: scroll;
+}
+
+.card {
+    background-color: rgb(128, 128, 128, 0.75);
+    ;
+    width: 370px;
+    height: 450px;
+    margin-top: 40px;
+    margin-left: 110px
+}

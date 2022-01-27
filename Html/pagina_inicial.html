@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Página inicial</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/font-awesome.min.css" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Lobster&family=Moon+Dance&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link href="../Css/pagina-inicial.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#a5f287; min-height: 50px;">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Navbar brand -->
+                <a class="navbar-brand mt-2 mt-lg-0" href="pagina_inicial.html">
+                    <img src="../Imagens/logo2.2.png" height="50" alt="Grab n' Eat" loading="lazy" />
+                </a>
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-weight: bold;">
+                    <li class="nav-item">
+                        <a class="nav-link" href="pagina_inicial.html">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sobre nós</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contacta-nos</a>
+                    </li>
+                </ul>
+                <!-- Left links -->
+            </div>
+            <!-- Collapsible wrapper -->
+            <!-- Right elements -->
+            <div class="d-flex align-items-center">
+                <!-- Icon -->
+                <a class="text-reset me-3" href="#">
+                    <i class="fa fa-heart fa-2x"></i>
+                </a>
+                <a class="text-reset me-3" href="carrinho.html">
+                    <i class="fa fa-shopping-cart fa-2x"></i>
+                    <!-- <div class="container mt-2">
+                        <form action="http://192.168.160.36/FormEcho.aspx">
+                            <div class="row form-group">
+                                <a href="carrinho.html" class="col-md-1 offset-6 text-right"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true" style="color: black;"></i></a>
+                                <div class="col-md-1 text-right"><span class="form-control" id="quantidades" title="Quantidade total de produtos">0</span></div>
+                                <div class="col-md-2 text-right"><span class="form-control" id="total" title="Preço total da compra">0.00</span></div>
+                            </div>
+                        </form>
+                    </div> -->
+                </a>
+                <a class="text-reset me-3" href="aminhaconta.html">
+                    <i class="fa fa-user-circle fa-2x"></i>
+                </a>
+            </div>
+            <!-- Right elements -->
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+
+
+    <div class="container">
+        <p>
+            <h1><b>Bem vindo/a à Grab N' Eat!</b></h1>
+        </p>
+        <p>
+            <h3>Veja alguns dos produtos que temos disponíveis hoje!</h3>
+        </p>
+        <p>
+            <h5>Ou, se preferir, pesquise já o estabelecimento de onde pretende fazer o seu pedido, ou procure-o pela sua localicação no mapa <a href="restaurantes.html"><u>aqui</u></a>!</h5>
+        </p>
+        <div class="row">
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card">
+                    <img src="../Imagens/Receita-de-Bacalhau-à-Brás-tradicional.jpg" class="card-img-top" style="width: 302,2px; height: 230px;">
+                    <div class="card-body">
+                        <h5 class="card-title">Bacalhau à Brás</h4>
+                            <p class="card-text">A Nossa Casa &nbsp; <i class="fa fa-heart-o"></i></p>
+                            <h4 class="card-text">5,50€</h4>
+                            <input type="hidden" name="precoproduto1" id="precoproduto1" value="5.50" />
+                            <input type="hidden" name="produto1" id="produto1" value="0" />
+                            <hr />
+                            <button for="produto1" type="button" href="#" name="Bacalhau à Brás" value="5.50" onClick="myFunc(this.name, this.value)" class="btn btn-success" style="background-color: #a5f287; color: black;">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card">
+                    <img src="../Imagens/0.JPG" class="card-img-top" style="width: 302,2px; height: 230px;">
+                    <div class="card-body">
+                        <h5 class="card-title">Tarte de maçã</h5>
+                        <p class="card-text">Pastelaria do Rossio &nbsp; <i class="fa fa-heart-o"></i></p>
+                        <h4 class="card-text">1,00€</h4>
+                        <input type="hidden" name="precoproduto2" id="precoproduto2" value="1.00" />
+                        <input type="hidden" name="produto2" id="produto2" value="0" />
+                        <hr />
+                        <button form="produto2" type="button" href="#" name="Tarte de maçã" value="1" onClick="myFunc(this.name, this.value)" class="btn btn-success" style="background-color: #a5f287; color: black;">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card">
+                    <img src="../Imagens/meia-dose-de-leitao.jpg" class="card-img-top" style="width: 302,2px; height: 230px;">
+                    <div class="card-body">
+                        <h5 class="card-title">Dose de Leitão</h5>
+                        <p class="card-text">Tasquinha do Leitão &nbsp; <i class="fa fa-heart-o"></i></p>
+                        <h4 class="card-text">6,50€</h4>
+                        <input type="hidden" name="precoproduto3" id="precoproduto3" value="6.50" />
+                        <input type="hidden" name="produto3" id="produto3" value="0" />
+                        <hr />
+                        <button type="button" href="#" name="Dose de Leitão" value="6.50" onClick="myFunc(this.name, this.value)" class="btn btn-success" style="background-color: #a5f287; color: black ">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5 mt-3 mb-5">
+                <div>Valor do Carrinho:</div>
+                <input type="text" disabled="disabled" value="0" name="Nome" id="Price" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/knockout-3.5.1.js"></script>
+    <script src="../Scripts/bootstrap.bundle.min.js"></script>
+    <script src="../Scripts/jquery-3.6.0.min.js"></script>
+    <script src="../Js/comprar.js"></script>
+    <script>
+        var dicionario = {};
+        var max = 0;
+
+        function myFunc(name, value) {
+
+            value = parseFloat(value);
+            max = max + value;
+            $("#Price").val(max);
+
+            if (name in dicionario) {
+                dicionario[name] += value;
+            } else {
+                dicionario[name] = value;
+            }
+            console.log(dicionario);
+
+            localStorage.setItem("db", JSON.stringify(dicionario));
+        };
+    </script>
+</body>
+
+</html>

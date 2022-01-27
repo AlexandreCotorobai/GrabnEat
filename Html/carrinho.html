@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>O meu carrinho</title>
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Lobster&family=Moon+Dance&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url(../Imagens/images.jpg);
+            background-size: cover;
+        }
+        
+        .fa-trash:hover {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#a5f287; min-height: 50px;">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Navbar brand -->
+                <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                    <img src="../Imagens/logo2.2.png" height="50" alt="Grab n' Eat" loading="lazy" />
+                </a>
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-weight: bold;">
+                    <li class="nav-item">
+                        <a class="nav-link" href="pagina_inicial.html">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sobre nós</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contacta-nos</a>
+                    </li>
+                </ul>
+                <!-- Left links -->
+            </div>
+            <!-- Collapsible wrapper -->
+            <!-- Right elements -->
+            <div class="d-flex align-items-center">
+                <!-- Icon -->
+                <a class="text-reset me-3" href="#">
+                    <i class="fa fa-heart fa-2x"></i>
+                </a>
+                <a class="text-reset me-3" href="carrinho.html">
+                    <i class="fa fa-shopping-cart fa-2x"></i>
+                </a>
+                <a class="text-reset me-3" href="aminhaconta.html">
+                    <i class="fa fa-user-circle fa-2x"></i>
+                </a>
+            </div>
+            <!-- Right elements -->
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+    <div style="float: left; margin-left: 5%; margin-top: 2%;">
+        <form>
+            <input type="button" value="Voltar" onClick="history.go(-1)" style="background-color: #a5f287; color: black; border-color: #a5f287; width: 100px;">
+        </form>
+    </div>
+
+    <div class="container" style="margin-top: 3%; text-align: center;">
+        <p>
+            <h1>O meu carrinho:</h1>
+        </p>
+    </div>
+    <div class="container" style="margin-top: 5%;">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Pedido</th>
+                    <th scope="col">Estabelecimento</th>
+                    <th scope="col">Preço</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div style="margin-left: 700px; margin-top: 15%">
+        <a href="pagamento.html" class="btn btn-success" style="background-color: #a5f287; color: black; border-color: #a5f287; width: 300px;">Terminar compra</a>
+    </div>
+
+
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/bootstrap.bundle.min.js"></script>
+    <script src="../Scripts/jquery-3.6.0.min.js"></script>
+    <script src="../Js/comprar.js"></script>
+    <script>
+        var dicionario = JSON.parse(localStorage.getItem("db"));
+        window.onload = function() {
+            console.log(dicionario);
+            var n = 0;
+            var estabelecimento = '';
+            for (var el in dicionario) {
+                n = n + 1;
+                if (el == 'Tarte de maçã') {
+                    estabelecimento = "Pastelaria do Rossio";
+                } else if (el == 'Bacalhau à Brás' || el == 'Polvo Grelhado') {
+                    estabelecimento = "A Nossa Casa";
+                } else if (el == 'Dose de Leitão') {
+                    estabelecimento = 'Tasquinha do Leitão';
+                } else {
+                    estabelecimento = 'Estabelecimento Novo'
+                }
+                //console.log(el + ': ' + dicionario[el]);
+                $(".table tbody").append('<tr><th scope="row">' + n + '</th><td>' + el + '</td><td>' + estabelecimento + '</td><td>' + dicionario[el] + '€</td><td><i id="' + el + '" onClick="deletar(this.id)" class="fa fa-trash"></i></td></tr>')
+            }
+        }
+
+        function deletar(chave) {
+            console.log(chave);
+            console.log(dicionario);
+            // dicionario = dicionario.delete(chave);
+            delete dicionario[chave];
+            localStorage.setItem("db", JSON.stringify(dicionario));
+            console.log(dicionario);
+            location.reload();
+        }
+    </script>
+</body>
+
+</html>

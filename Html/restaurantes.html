@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Restaurantes</title>
+    <link href="../Content/bootstrap.min.css" rel="stylesheet">
+    <link href="../Content/font-awesome.min.css" rel="stylesheet">
+    <style>
+        #map {
+            width: 1658px;
+            height: 550px;
+            margin-top: 20px;
+        }
+        
+        body {
+            background-image: url(/Imagens/images.jpg);
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#a5f287; min-height: 50px;">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Navbar brand -->
+                <a class="navbar-brand mt-2 mt-lg-0" href="pagina_inicial.html">
+                    <img src="../Imagens/logo2.2.png" height="50" alt="Grab n' Eat" loading="lazy" />
+                </a>
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-weight: bold;">
+                    <li class="nav-item">
+                        <a class="nav-link" href="pagina_inicial.html">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sobre nós</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contacta-nos</a>
+                    </li>
+                </ul>
+                <!-- Left links -->
+            </div>
+            <!-- Collapsible wrapper -->
+            <!-- Right elements -->
+            <div class="d-flex align-items-center">
+                <!-- Icon -->
+                <a class="text-reset me-3" href="#">
+                    <i class="fa fa-heart fa-2x"></i>
+                </a>
+                <a class="text-reset me-3" href="carrinho.html">
+                    <i class="fa fa-shopping-cart fa-2x"></i>
+                    <!-- <div class="container mt-2">
+                        <form action="http://192.168.160.36/FormEcho.aspx">
+                            <div class="row form-group">
+                                <a href="carrinho.html" class="col-md-1 offset-6 text-right"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true" style="color: black;"></i></a>
+                                <div class="col-md-1 text-right"><span class="form-control" id="quantidades" title="Quantidade total de produtos">0</span></div>
+                                <div class="col-md-2 text-right"><span class="form-control" id="total" title="Preço total da compra">0.00</span></div>
+                            </div>
+                        </form>
+                    </div> -->
+                </a>
+                <a class="text-reset me-3" href="aminhaconta.html">
+                    <i class="fa fa-user-circle fa-2x"></i>
+                </a>
+            </div>
+            <!-- Right elements -->
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+    <p>
+        <h2 style="text-align: center; margin-top: 5%;">Pesquise um estabelecimento ou procure-o no mapa!</h2>
+    </p>
+
+    <div class="col-12 col-md-6 col-lg-9" style="margin-top: 20px; margin-left: 37%;">
+        <div class="d-inline-flex mt-4" id="forms" style="width: 465px ; margin-left: auto; margin-right: auto;">
+            <input id="searchbar" class="form-control searchBar" type="search" placeholder="Search" aria-label="Search">
+            <button style="margin-left: 3%;" class="fa fa-search btn btn-outline-success" id="lupadef" type="submit" onclick="search()"></button>
+        </div>
+    </div>
+    <div class="container" id="map"></div>
+
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script>
+        function initMap() {
+            var location = {
+                lat: 40.63340053435344,
+                lng: -8.659468073536623
+
+            };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 18,
+                center: location
+            });
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            })
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZF0nxLW8g75qtJ-UoHyUiA8b8Z-SD9ns&callback=initMap" async defer></script>
+
+
+</body>
+
+</html>

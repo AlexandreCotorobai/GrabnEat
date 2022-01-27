@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Página inicial</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Lobster&family=Moon+Dance&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link href="../Css/pagina-inicial.css" rel="stylesheet" />
+    <link href="../Css/estabelecimento.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url(/Imagens/images.jpg);
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#a5f287; min-height: 50px;">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Navbar brand -->
+                <a class="navbar-brand mt-2 mt-lg-0" href="pagina_inicial.html">
+                    <img src="../Imagens/logo2.2.png" height="50" alt="Grab n' Eat" loading="lazy" />
+                </a>
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-weight: bold;">
+                    <li class="nav-item">
+                        <a class="nav-link" href="pagina_inicial.html">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sobre nós</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contacta-nos</a>
+                    </li>
+                </ul>
+                <!-- Left links -->
+            </div>
+            <!-- Collapsible wrapper -->
+            <!-- Right elements -->
+            <div class="d-flex align-items-center">
+                <!-- Icon -->
+                <a class="text-reset me-3" href="listapedidos.html">
+                    <i class="fa fa-list fa-2x"></i>
+                </a>
+                <a class="text-reset me-3" href="aminhaconta2.html">
+                    <i class="fa fa-user-circle fa-2x"></i>
+                </a>
+            </div>
+            <!-- Right elements -->
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+
+    <div class="container">
+        <p>
+            <h1><b>Bem vindo/a à Grab N' Eat!</b></h1>
+        </p>
+        <p>
+            <h3>Adicione o seu produto: </h3>
+        </p>
+    </div>
+    <div class="col-12">
+        <div style="float: right; margin-right: 4%; " class="col-6">
+            <p>
+                <form>
+                    <input type="text" name="FirstName" placeholder="Nome" /><br>
+                    <select name="Doses">
+                        <option value="1" selected="selected">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                    <br>
+                    <textarea name="Comments" rows="9" cols="80" placeholder="Detalhes sobre o seu produto"></textarea></br>
+                </form>
+            </p>
+        </div>
+        <div class="card col-6" style="width: 400px; margin-left: 20%; margin-top: 3%;">
+            <div class="card-body">
+                <h2 class="card-title" style="text-align: center;">Fotografia do produto</h2>
+                <p class="card-text">
+                    <form name="PersonData" action="http://192.168.160.36/FormEcho.aspx" method="POST" enctype="multipart/form-data">
+                        <table style="margin-left: 22%;">
+                            <tr>
+                                <td style="width: 200px; height: 200px; background-color: lightgray; "><i class="fa fa-plus-square" style="justify-content: center; display: flex "></i></td>
+                            </tr>
+                        </table>
+                    </form>
+                </p>
+                <a class="btn" style="border-color:  #a5f287;"><input type="file" name="fotoproduto"></a>
+            </div>
+        </div>
+        </br>
+        <div style="justify-content: center; display: flex; ">
+            <a href="pagina_inicial2.html" class="btn btn-success" style="background-color: #a5f287; color: black; border-color: #a5f287; width: 300px;">Adicionar produto</a>
+        </div>
+
+    </div>
+
+
+
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/knockout-3.5.1.js"></script>
+    <script src="../Scripts/bootstrap.bundle.min.js"></script>
+    <script src="../Scripts/jquery-3.6.0.min.js"></script>
+    <script src="../Js/inicial.js"></script>
+</body>
+
+</html>
+
+</br>
