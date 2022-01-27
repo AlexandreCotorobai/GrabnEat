@@ -155,12 +155,23 @@
                     } else if (el == 'Polvo Grelhado'){
                         preco = 7.5;
                     }
-                    $(".table tbody").append('<tr id="' + n + '"><th scope="row">' + n + '</th><td>' + el + '</td><td>' + lstp[el]/preco + '</td><td>Maria207</td><td><i onClick="deletar(el)" class="fa fa-trash"></i></td></tr>')
+                    $(".table tbody").append('<tr id="' + n + '"><th scope="row">' + n + '</th><td>' + el + '</td><td>' + lstp[el]/preco + '</td><td>Maria207</td><td><i id="' + el + '" onClick="completar(this.id)" class="fa fa-check-circle-o"></i></td></tr>')
 
                 }
                 // console.log(el + ': ' + dicionario[el]);
                 // $(".table tbody").append('<tr id="' + n + '"><th scope="row">' + n + '</th><td>' + el + '</td><td>' + lstp[el]/preco + '</td><td>Maria207</td><td><i onClick="deletar(el)" class="fa fa-trash"></i></td></tr>')
             }
+            
+        }
+        function completar(chave) {
+            console.log(chave);
+            // console.log(dicionario);
+            // // dicionario = dicionario.delete(chave);
+            // delete dicionario[chave];
+            // localStorage.setItem("db", JSON.stringify(dicionario));
+            // console.log(dicionario);
+            // location.reload();
+            document.getElementById(chave).style.color = "green";
         }
  
     </script>
